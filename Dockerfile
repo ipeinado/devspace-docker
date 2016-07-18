@@ -68,7 +68,7 @@ RUN echo "xdebug.max_nesting_level = 300" >> /etc/php5/apache2/conf.d/20-xdebug.
 RUN echo "xdebug.max_nesting_level = 300" >> /etc/php5/cli/conf.d/20-xdebug.ini
 
 # Build Drupal site.
-RUN cd /var && git clone http://git.qualtim.com/noahlange/devspace-makefile.git dspace
+RUN cd /var && git clone https://github.com/Pushing7/devspace-makefile.git dspace
 RUN rm -rf /var/www
 RUN drush make /var/dspace/dspace.make.yml /var/www -y
 
@@ -83,7 +83,7 @@ RUN mkdir -p /var/www/sites/default/files && \
 # Install Drupal and enable modules.
 RUN /etc/init.d/mysql start && \
 	cd /var/www && \
-	drush si standard -y --db-url=mysql://root:@localhost/drupal --account-pass=admin install_configure_form.update_status_module='array(FALSE,FALSE)' && \ 
+	drush si standard -y --db-url=mysql://root:@localhost/drupal --account-pass=admin install_configure_form.update_status_module='array(FALSE,FALSE)' && \
 	drush en -y --debug dspace_content
 
 # Expose Apache, MySQL and SSH
