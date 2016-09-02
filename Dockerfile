@@ -7,6 +7,8 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN apt-get update
 RUN apt-get install -y \
 	nano \
+	vim \
+	locate \
 	git \
 	apache2 \
 	php5-cli \
@@ -74,9 +76,9 @@ RUN drush make /var/dspace/dspace.make.yml /var/www -y
 
 RUN mkdir -p /var/www/sites/default/files && \
 	chmod a+w /var/www/sites/default -R && \
-	mkdir /var/www/sites/all/modules/contrib -p && \
+	mkdir /var/www/sites/all/modules -p && \
 	mkdir /var/www/sites/all/modules/custom && \
-	mkdir /var/www/sites/all/themes/contrib -p && \
+	mkdir /var/www/sites/all/themes -p && \
 	mkdir /var/www/sites/all/themes/custom && \
 	chown -R www-data:www-data /var/www/
 
