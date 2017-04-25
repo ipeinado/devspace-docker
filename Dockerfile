@@ -36,9 +36,14 @@ RUN composer global require drush/drush:8.* \
 
 
 # Build Drupal site.
-RUN git clone https://github.com/Pushing7/gpii.net.git  /var/www/html
- 
-RUN chown -R www-data:www-data /var/www/html && ln -s developerspace.gpii.net /var/www/html/web/sites/default 
+RUN git clone https://github.com/davidgreiner/gpii.net.git  /var/www/html
+
+RUN cd /var/www/html && git submodule init && git submodule update || true
+
+RUN cd ../
+
+RUN chown -R www-data:www-data /var/www/html
+RUN ln -s developerspace.gpii.net /var/www/html/web/sites/default
 
 
 RUN mkdir -p ~/.drush/ && drush --root=/var/www/html/web site-alias @self --full --with-optional | sed -e '1i\\<?php' -e '$a\\?>' -e s/"self"/"default"/ >>~/.drush/default.alias.drushrc.php

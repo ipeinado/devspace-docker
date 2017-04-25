@@ -19,15 +19,8 @@ db:
     MYSQL_PASSWORD: admin
     MYSQL_DATABASE: dspace
 
-#does not work yet. Needs schemas!!
 solr:
-        image: solr:5 #drupal v7 only currently support v5
-  volumes_from:
-          - dspace
+  image: solr:5 #drupal v7 only currently support v5
   command: [solr-precreate, dspace]
 
 
-# Need a way to copy config from dspace to solr 
-# we could create try create a copy docker that terminates directly that links both volumes
-# or create volume to initialize /opt/solr/server/solr/dspace
-# might want to use docker compose v2 but then the env logic has to be a rewritten a bit
