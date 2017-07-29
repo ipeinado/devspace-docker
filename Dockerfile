@@ -36,11 +36,10 @@ RUN composer global require drush/drush:8.* \
 
 
 # Build Drupal site.
-RUN git clone https://github.com/davidgreiner/gpii.net.git  /var/www/html
+COPY .git/modules/gpii.net/ /tmp/gpii.net.git
+RUN git clone /tmp/gpii.net.git  /var/www/html
 
-RUN cd /var/www/html && git submodule init && git submodule update || true
-
-RUN cd ../
+RUN git -C /var/www/html submodule update --init --recursive
 
 RUN chown -R www-data:www-data /var/www/html
 RUN ln -s developerspace.gpii.net /var/www/html/web/sites/default

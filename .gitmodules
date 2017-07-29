@@ -1,6 +1,9 @@
 [submodule "devspace-makefile"]
 	path = devspace-makefile
-	url = git@github.com:Pushing7/devspace-makefile.git
+	url = git@github.com:teco-kit/devspace-makefile.git
 [submodule "wait-for-it"]
 	path = wait-for-it
 	url = git@github.com:vishnubob/wait-for-it.git
+[submodule "gpii.net"]
+	path = gpii.net
+	url = https://github.com/davidgreiner/gpii.net.git
