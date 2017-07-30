@@ -7,7 +7,7 @@ dspace:
     - "80:80"
   volumes:
         - /opt/solr/server/solr/dspace
-        - /var/www/html
+        - /var/www
 
 db:
   image: mysql

@@ -34,15 +34,15 @@ RUN composer global require drush/drush:8.* \
 &&  composer global update \
 &&  ln -s /root/.composer/vendor/bin/drush /usr/local/bin/drush
 
-
 # Build Drupal site.
 COPY .git/modules/gpii.net/ /tmp/gpii.net.git
-RUN git clone /tmp/gpii.net.git  /var/www/html
+RUN rm -rf /var/www/* && cd /var/www/ && git clone /tmp/gpii.net.git . 
 
-RUN git -C /var/www/html submodule update --init --recursive
+RUN git -C /var/www submodule update --init --recursive
 
-RUN chown -R www-data:www-data /var/www/html
-RUN ln -s developerspace.gpii.net /var/www/html/web/sites/default
+RUN chown -R www-data:www-data /var/www
+RUN ln -s web /var/www/html
+RUN ln -s developerspace.gpii.net /var/www/html/sites/default
 
 
 RUN mkdir -p ~/.drush/ && drush --root=/var/www/html/web site-alias @self --full --with-optional | sed -e '1i\\<?php' -e '$a\\?>' -e s/"self"/"default"/ >>~/.drush/default.alias.drushrc.php
