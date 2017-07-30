@@ -4,14 +4,27 @@ This repository contains an initial docker file for use in creating a local deve
 
 Current status is that this is still very much a work in progress. 
 
+## Init
+
+Get the submodules using
+	git submodule update --init 
+	git submodule update --init --recursive
+
 ## Build
 
 The build process looks something like the following:
 
     docker-compose build 
 
-## Build
+## Run
 
 The running it looks something like the following:
 
     docker-compose up 
+
+## Configure/Test
+
+Call something like this to get a login:
+    docker-compose exec -u www-data dspace drush @default uli admin
+
+Replace "default" in the URL with your local docker ip-address
