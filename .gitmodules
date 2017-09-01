@@ -3,7 +3,7 @@
 	url = https://github.com/pushing7/devspace-makefile.git
 	shallow = true
 [submodule "wait-for-it"]
-	path = wait-for-it
+	path = drupal/wait-for-it
 	url = git@github.com:vishnubob/wait-for-it.git
 [submodule "gpii.net"]
 	path = gpii.net

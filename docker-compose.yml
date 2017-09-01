@@ -1,13 +1,12 @@
-dspace:
-  build: .
+drupal:
+  build: drupal 
   links:
     - db
     - solr
   ports:
     - "80:80"
-  volumes:
-        - /opt/solr/server/solr/dspace
-        - /var/www
+  volumes_from:
+    - www-data
 
 db:
   image: mysql
@@ -21,6 +20,11 @@ db:
 
 solr:
   image: solr:5 #drupal v7 only currently support v5
-  command: [solr-precreate, dspace]
-
-
+  command: [solr-precreate, gpii-dspace, /var/www/solr]
+  volumes_from:
+    - www-data
+  
+www-data:
+  build: . 
+  volumes:
+    - /var/www
