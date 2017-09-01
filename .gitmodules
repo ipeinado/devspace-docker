@@ -1,10 +1,10 @@
 [submodule "devspace-makefile"]
 	path = devspace-makefile
-	url = git@github.com:teco-kit/devspace-makefile.git
+	url = https://github.com/pushing7/devspace-makefile.git
+	shallow = true
 [submodule "wait-for-it"]
 	path = wait-for-it
 	url = git@github.com:vishnubob/wait-for-it.git
 [submodule "gpii.net"]
 	path = gpii.net
-	url = https://github.com/teco-kit/gpii.net.git
-	branch = dockerfile
+	url = https://github.com/pushing7/gpii.net.git
