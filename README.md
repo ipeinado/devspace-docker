@@ -25,6 +25,6 @@ The running it looks something like the following:
 ## Configure/Test
 
 Call something like this to get a login:
-    docker-compose exec -u www-data dspace drush @default uli admin
+    docker-compose exec -u www-data drupal drush @default uli admin
 
 Replace "default" in the URL with your local docker ip-address

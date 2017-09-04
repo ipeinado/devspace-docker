@@ -3,13 +3,13 @@ drupal:
   links:
     - db
     - solr
-    - vdebug
+#    - vdebug
   ports:
     - "80:80"
   volumes_from:
     - www-data
-  environment:
-     XDEBUG_CONFIG: idekey=docdrupal remote_host=vdebug profiler_enable=1
+#  environment:
+#    XDEBUG_CONFIG: idekey=docdrupal remote_host=vdebug profiler_enable=1
 
 db:
   image: mysql
@@ -28,12 +28,12 @@ solr:
     - www-data
 
 
-vdebug:
-  build: vdebug 
-  volumes_from:
-    - www-data
-  command: -c VdebugStart
-  working_dir: /var/www/html
+#vdebug:
+#  build: vdebug 
+#  volumes_from:
+#    - www-data
+#  command: -c VdebugStart
+#  working_dir: /var/www/html
 
 www-data:
   build: . 
